@@ -12,6 +12,7 @@ function BookCreate({ onCreate }) {
     onCreate(title);
     setTitle("");
   };
+
   return (
     <div className="book-create">
       <h3>Add a book</h3>
