@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import axios from "axios";
 // beacuse provider component is here
 
-const BooksContext = createElement();
+const BooksContext = createContext();
 
 function Provider({ children }) {
   const [books, setBooks] = useState([]);
@@ -44,8 +44,19 @@ function Provider({ children }) {
     const updatedBooks = [...books, response.data];
     setBooks(updatedBooks);
   };
+  const valueToShare = {
+    books: books,
+    deleteBookById,
+    editBookById,
+    createBook,
+    fetchBooks,
+  };
 
-  return <BooksContext.Provider value={{}}>{children}</BooksContext.Provider>;
+  return (
+    <BooksContext.Provider value={{ valueToShare }}>
+      {children}
+    </BooksContext.Provider>
+  );
 }
 
 export { Provider };
