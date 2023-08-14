@@ -14,7 +14,7 @@ function App() {
     <div className="app">
       <h1>Reading List</h1>
       <BookList />
-      <BookCreate onCreate={createBook} />
+      <BookCreate />
     </div>
   );
 }

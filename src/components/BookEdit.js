@@ -3,7 +3,7 @@ import useBooksContext from "../hooks/use-books-context";
 
 function BookEdit({ book, onSubmit }) {
   const [title, setTitle] = useState(book.title);
-  const { editBookById } = useBooksContext(BooksContext);
+  const { editBookById } = useBooksContext();
 
   const handleChange = (event) => {
     setTitle(event.target.value);
@@ -11,8 +11,9 @@ function BookEdit({ book, onSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    onSubmit();
     editBookById(book.id, title);
-    onSubmit(); // Move this after editBookById
   };
 
   return (

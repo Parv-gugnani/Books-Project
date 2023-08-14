@@ -1,14 +1,12 @@
-import React, { useContext } from "react"; // Import useContext from React
-import BookShow from "../hooks/BookShow";
-import useBooksContext from "../hooks/use-books-context"; // Assuming this is a custom hook you've defined
+import BookShow from "./BookShow";
+import useBooksContext from "../hooks/use-books-context";
 
 function BookList() {
-  const { books } = useBooksContext(); // Use your custom hook here
+  const { books } = useBooksContext();
 
-  // Mapping the array of books to JSX elements
-  const renderedBooks = books.map((book) => (
-    <BookShow key={book.id} book={book} />
-  ));
+  const renderedBooks = books.map((book) => {
+    return <BookShow key={book.id} book={book} />;
+  });
 
   return <div className="book-list">{renderedBooks}</div>;
 }
